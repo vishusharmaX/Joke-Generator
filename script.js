@@ -1,6 +1,6 @@
 
 
-onst jokes = document.querySelector('#joke');
+const jokes = document.querySelector('#joke');
 const jokebtn = document.querySelector('#jokebtn');
 
 const generateJokes = async () => {
