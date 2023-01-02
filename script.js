@@ -1,29 +1,25 @@
 
 
-const jokes = document.querySelector('#joke');
+onst jokes = document.querySelector('#joke');
 const jokebtn = document.querySelector('#jokebtn');
 
-
-const generateJokes =()=>{
-    const setHeader ={
-        headers : {
-            Accept : 'application/json'
+const generateJokes = async () => {
+    const setHeader = {
+        headers: {
+            Accept: 'application/json'
         }
     }
-    fetch('https://icanhazdadjoke.com',setHeader)
-    .then((res)=> res.json())
-    .then((data)=>{
-        jokes.innerHTML= data.joke;
-    }).catch((error)=>{
-        console.log(error);
-    })
-
+    try {
+        const res = await fetch('https://icanhazdadjoke.com', setHeader);
+        const data = await res.json();
+        jokes.innerHTML = data.joke;
+    } catch (error) {
+        console.log(`the error is ${error}`);
+    }
 }
 
-jokebtn.addEventListener('click',generateJokes);
+jokebtn.addEventListener('click', generateJokes);
 generateJokes();
-
-
 
 
 
